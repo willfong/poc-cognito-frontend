@@ -1,3 +1,15 @@
-export default function App() {
-  return <h1 className="text-4xl p-4 text-blue-500">Hello World</h1>;
+// App.js
+import React from "react";
+import LoginComponent from "./login";
+import SignupComponent from "./signup";
+
+function App() {
+  return (
+    <div className="h-screen flex flex-col">
+      <SignupComponent />
+      <LoginComponent />
+    </div>
+  );
 }
+
+export default App;

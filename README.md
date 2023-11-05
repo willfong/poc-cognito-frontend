@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# POC Cognito Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is just a simple React app that demonstrates how React works with AWS Cognito.
 
-## Available Scripts
+This app is configured for signing up with email and password. Cognito will use SES to send a confirmation code that needs to be entered to verify the address.
 
-In the project directory, you can run:
+Once the user has been confirmed, successful logins will print to the console the JWT.
 
-### `npm start`
+## Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Create an `.env` file:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```sh
+REACT_APP_AWS_USER_POOL_ID=ap-southeast-1_abcd1234
+REACT_APP_AWS_CLIENT_ID=2hg...618
+```
 
-### `npm test`
+## Run
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+npm run start
+```
 
-### `npm run build`
+## Example JWT
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```sh
+{
+  "sub": "af9d639d-62fe-4e65-a78f-456ad948dcc3",
+  "email_verified": true,
+  "iss": "https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_abcd1234",
+  "cognito:username": "af9d639d-62fe-4e65-a78f-456ad948dcc3",
+  "origin_jti": "315eadb7-0fa7-4124-b64e-e490a69d40d0",
+  "aud": "2hgel84cqofajbffhmk05ft618",
+  "event_id": "6eb900e2-a387-479f-ada3-56f094832352",
+  "token_use": "id",
+  "auth_time": 1699193394,
+  "exp": 1699196994,
+  "iat": 1699193394,
+  "jti": "a1a2e190-f76d-4b23-b181-749a3a230f44",
+  "email": "you@example.com"
+}
+```
