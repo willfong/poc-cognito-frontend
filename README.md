@@ -6,6 +6,16 @@ This app is configured for signing up with email and password. Cognito will use 
 
 Once the user has been confirmed, successful logins will print to the console the JWT.
 
+## TODO
+
+1. MFA - Adding the MFA seems to work because verification passed. But the signIn doesn't seem to require it. Need to find out how to require MFA if it has been added.
+1. Refresh - Automatically update the access token.
+
+## Design Considerations
+
+1. We'd like to make MFA optional, since not all applications may need this level of compelxity.
+1. We're not supporting SMS MFA, since that's crap to use and costs money and sucks to support.
+
 ## Setup
 
 Create an `.env` file:
@@ -25,18 +35,17 @@ npm run start
 
 ```sh
 {
-  "sub": "af9d639d-62fe-4e65-a78f-456ad948dcc3",
-  "email_verified": true,
-  "iss": "https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_abcd1234",
-  "cognito:username": "af9d639d-62fe-4e65-a78f-456ad948dcc3",
-  "origin_jti": "315eadb7-0fa7-4124-b64e-e490a69d40d0",
-  "aud": "2hgel84cqofajbffhmk05ft618",
-  "event_id": "6eb900e2-a387-479f-ada3-56f094832352",
-  "token_use": "id",
-  "auth_time": 1699193394,
-  "exp": 1699196994,
-  "iat": 1699193394,
-  "jti": "a1a2e190-f76d-4b23-b181-749a3a230f44",
-  "email": "you@example.com"
+  "sub": "072b086a-e4d8-4af3-b1bd-321a48961091",
+  "iss": "https://cognito-idp.ap-southeast-1.amazonaws.com/ap-southeast-1_4jibAIl4a",
+  "client_id": "1885rf7od4q4mv6h3s087ibut1",
+  "origin_jti": "578f26f0-88d4-4d06-9231-463f9332e5bc",
+  "event_id": "4a7559a8-a7b7-4737-9a71-1a00ad7fbdb4",
+  "token_use": "access",
+  "scope": "aws.cognito.signin.user.admin",
+  "auth_time": 1700298196,
+  "exp": 1700301796,
+  "iat": 1700298196,
+  "jti": "7732b2c5-3a6a-4078-8d14-fda04d21b38a",
+  "username": "072b086a-e4d8-4af3-b1bd-321a48961091"
 }
 ```
